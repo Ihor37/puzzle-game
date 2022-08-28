@@ -291,21 +291,7 @@ if (window.innerWidth < 1400) {
 
 
 
-    function dragMove(e) {
-        if (e.target.isFreezed) return;
-        e.preventDefault();
-        const touch = e.targetTouches[0];
-        const target = e.target;
 
-        target.style.left = `${touch.pageX - wrapper.getBoundingClientRect().left - (target.offsetWidth / 2)}px`;
-        target.style.top = `${touch.pageY - wrapper.getBoundingClientRect().top - (target.offsetHeight / 2)}px`;
-
-
-        const itemCopy = Object.assign(target);
-        console.log(itemCopy);
-        checkPosition(target);
-
-    }
 
 
     function getAnimationDuration() {
@@ -318,11 +304,10 @@ if (window.innerWidth < 1400) {
         return Math.floor(Math.random() * (max - min + 1)) + min; //Максимум и минимум включаются
     }
 
-    function is_touch_device() {
-        return !!('ontouchstart' in window);
-    }
+  
 
     if (is_touch_device()) {
         wrapper.addEventListener('touchmove', dragMove);
+        
     }
 }
